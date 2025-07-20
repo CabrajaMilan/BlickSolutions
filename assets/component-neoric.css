@@ -64,11 +64,11 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--color-scrollLight);   /* un-selected */
+  background: var(--color-scrollLight);     /* un‑selected */
   opacity: 1;
 }
 .neoric-main .splide__pagination__page.is-active {
-  background: var(--color-scrollDark);    /* selected */
+  background: var(--color-scrollDark);      /* selected */
 }
 
 /* === Info card === */
@@ -85,14 +85,13 @@
 /* Title & vendor */
 .neoric-info-card .neoric-title {
   font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);   /* semibold */
+  font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
   margin: 0 0 8px;
 }
-
 .neoric-info-card .neoric-vendor {
   font-size: var(--font-size-medium);
-  font-weight: var(--font-weight-medium);     /* medium */
+  font-weight: var(--font-weight-medium);
   color: var(--color-text-muted);
   margin: 0 0 16px;
 }
@@ -135,7 +134,7 @@
   background: var(--color-availableGreen);
 }
 
-/* Add-to-cart button */
+/* Add‑to‑cart button */
 .neoric-info-card .button--primary {
   width: 100%;
   max-width: 424px;
@@ -160,21 +159,18 @@
 
 /* Tablet & Mobile (≤1024px) */
 @media (max-width: 1024px) {
-  .neoric-product-gallery-section { padding: 2rem 1rem; }
+  .neoric-product-gallery-section       { padding: 2rem 1rem; }
 
-  .neoric-product-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
+  .neoric-product-grid                  { grid-template-columns: 1fr; gap: 1.5rem; }
 
-  .neoric-thumbs { display: none; }
+  .neoric-thumbs                        { display: none; }
 
-  .neoric-main { width: 100%; height: auto; }
-  .neoric-main .splide__slide img { width: 100%; height: auto; }
-  .neoric-main .splide__arrow { display: none !important; }
-  #mainSplide .splide__list { overflow: visible !important; }
+  .neoric-main                          { width: 100%; height: auto; }
+  .neoric-main .splide__slide img       { width: 100%; height: auto; }
+  .neoric-main .splide__arrow           { display: none !important; }
+  #mainSplide .splide__list             { overflow: visible !important; }
 
-  .neoric-info-card { margin-top: 2rem; padding: 16px; }
+  .neoric-info-card                     { margin-top: 2rem; padding: 16px; }
 
   .neoric-icons {
     display: flex;
@@ -187,7 +183,7 @@
 
 /* Desktop (≥1025px) */
 @media (min-width: 1025px) {
-  .neoric-product-gallery-section { padding: 4rem 2rem; }
+  .neoric-product-gallery-section       { padding: 4rem 2rem; }
 
   .neoric-product-grid {
     grid-template-columns: 100px 480px 1fr;
@@ -195,35 +191,32 @@
   }
 
   /* Thumbnails */
-  .neoric-thumbs { width: 100px; }
-  .neoric-thumbs .splide__slide {
-    width: 100px !important;
-    height: 100px !important;
-  }
-  .neoric-thumbs .splide__slide img { width: 100%; height: 100%; }
+  .neoric-thumbs                        { width: 100px; }
+  .neoric-thumbs .splide__slide         { width: 100px !important; height: 100px !important; }
+  .neoric-thumbs .splide__slide img     { width: 100%; height: 100%; }
 
   /* Main image */
-  .neoric-main { width: 480px; height: 480px; }
-  .neoric-main .splide__slide img { width: 100%; height: 100%; }
+  .neoric-main                          { width: 480px; height: 480px; }
+  .neoric-main .splide__slide img       { width: 100%; height: 100%; }
 
   /* Hide dots on desktop */
-  .neoric-main .splide__pagination { display: none !important; }
+  .neoric-main .splide__pagination      { display: none !important; }
 
-  /* Info-card size & desktop typography */
+  /* Info‑card size + centre vertically */
   .neoric-info-card {
     width: 475px;
     height: 275px;
     padding: 32px;
+    align-self: center;                 /* NEW: centre card beside image */
   }
 
-  /* Desktop fonts */
-  .neoric-info-card .neoric-title      { font-size: 25px; line-height: 30px; font-weight: var(--font-weight-semibold); }
-  .neoric-info-card .neoric-vendor     { font-size: 18px; font-weight: var(--font-weight-medium); }
+  /* Desktop typography */
+  .neoric-info-card .neoric-title       { font-size: 25px; line-height: 30px; font-weight: var(--font-weight-semibold); }
+  .neoric-info-card .neoric-vendor      { font-size: 18px; font-weight: var(--font-weight-medium); }
   .neoric-info-card .price-compare,
-  .neoric-info-card .price-current     { font-size: 18px; font-weight: var(--font-weight-semibold); }
-  .neoric-info-card .price-tax         { font-size: 10px; font-weight: var(--font-weight-medium); }
-  .neoric-info-card .neoric-stock      { font-size: 15px; font-weight: var(--font-weight-medium); }
+  .neoric-info-card .price-current      { font-size: 18px; font-weight: var(--font-weight-semibold); }
+  .neoric-info-card .price-tax          { font-size: 10px; font-weight: var(--font-weight-medium); }
+  .neoric-info-card .neoric-stock       { font-size: 15px; font-weight: var(--font-weight-medium); }
 
-  /* Desktop button text 18 px semibold */
-  .neoric-info-card .button--primary   { font-size: 18px; font-weight: var(--font-weight-semibold); }
+  .neoric-info-card .button--primary    { font-size: 18px; font-weight: var(--font-weight-semibold); }
 }
