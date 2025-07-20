@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     rewind      : true,
     pagination  : false,
     arrows      : true,
-    heightRatio : 0.75,
+    heightRatio : 1,
 
     breakpoints: {
       768: {
