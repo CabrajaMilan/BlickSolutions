@@ -134,7 +134,7 @@
 .neoric-info-card {
   width: 475px;
   min-height: 275px;
-  padding: 32px 40px;
+  padding: 32px 48px;
   background: var(--color-fullWhite);
   border-radius: .75rem;
   box-shadow: 0 4px 12px var(--color-shadowLight);
@@ -199,7 +199,7 @@
 
 /* button */
 .button--primary {
-  width: 424px;
+  max-width: 424px;
   height: 52px;
   background: var(--color-text-secondary);
   color: var(--color-text-light);
