@@ -32,6 +32,9 @@
 }
 
 /* Main slider */
+.neoric-main {
+  position: relative;
+}
 .neoric-main .splide__slide img {
   width: 100%;
   height: auto;
@@ -51,16 +54,18 @@
 
 /* Pagination (dots) */
 .neoric-main .splide__pagination {
-  margin-top: 1rem;
-  display: flex;
+  position: static !important;
+  display: flex !important;
   justify-content: center;
+  margin-top: 1rem;
+  gap: 8px;
 }
 .neoric-main .splide__pagination__page {
   width: 8px;
   height: 8px;
-  margin: 0 4px;
   border-radius: 50%;
   background: var(--color-scrollDark);
+  opacity: 1;
 }
 .neoric-main .splide__pagination__page.is-active {
   background: var(--color-text-secondary);
@@ -171,11 +176,6 @@
   }
   .neoric-main .splide__arrow {
     display: none !important;
-  }
-  .neoric-main .splide__pagination {
-    display: flex !important;
-    justify-content: center;
-    margin-top: 1rem;
   }
   #mainSplide .splide__list {
     overflow: visible !important;
