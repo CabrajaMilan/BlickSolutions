@@ -141,6 +141,16 @@
 
 /* Tablet & Mobile (≤1024px) */
 @media (max-width: 1024px) {
+  /* make sure we can see the dots */
+  .neoric-main .splide__pagination {
+    display: flex !important;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  .neoric-main .splide__arrow {
+    display: none;
+  }
+
   .neoric-product-gallery-section {
     padding: 2rem 1rem;
   }

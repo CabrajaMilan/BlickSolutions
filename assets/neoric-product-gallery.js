@@ -20,22 +20,25 @@ document.addEventListener('DOMContentLoaded', () => {
   },
 }).mount();
 
-  /* Main slider */
   const main = new Splide('#mainSplide', {
-    type        : 'fade',
-    rewind      : true,
-    pagination  : false,
-    arrows      : true,
-    heightRatio : 1,
+    type       : 'fade',
+    rewind     : true,
+    pagination : false, // desktop only
+    arrows     : true,
+    heightRatio: 1,
 
     breakpoints: {
-      768: {
-        type        : 'slide',
-        arrows      : false,    // hide arrows on phones
-        pagination  : true,     // show dots on phones
-        perPage     : 1,
-        autoHeight  : true,
-        drag        : 'free'
+      // At widths ≤1024px, switch to a slide view with dots + peek
+      1024: {
+        type       : 'slide',
+        perPage    : 1,
+        arrows     : false,      // hide arrows on mobile
+        pagination : true,       // show dots on mobile
+        peek       : {           // show a sliver of next/prev slide
+          before: 20,
+          after: 20
+        },
+        gap        : 10
       }
     },
   });
