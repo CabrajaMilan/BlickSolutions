@@ -1,3 +1,21 @@
-<div class="neoric-icons">
-  <!-- TODO: add your feature icons here -->
+{%- comment -%}
+  Simple trust‑icon row displayed beneath the product gallery.
+  Replace the SVG and text with real icons if desired.
+{%- endcomment -%}
+
+<div class="neoric-icons" style="display:flex;justify-content:center;gap:6rem;margin-top:3rem">
+  {% for i in (1..3) %}
+    <figure style="text-align:center;max-width:180px">
+      <!-- Placeholder icon -->
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M8 12l2 2 4-4" />
+      </svg>
+
+      <figcaption>
+        <strong>100 % Qualität</strong><br>
+        Dank weichem Silikon
+      </figcaption>
+    </figure>
+  {% endfor %}
 </div>
