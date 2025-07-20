@@ -1,8 +1,3 @@
-/**
- *  Neoric Product Gallery – Splide initialisation
- *  • #thumbSplide – vertical thumbnail rail
- *  • #mainSplide  – main image slider (fade) synced with thumbs
- */
 document.addEventListener('DOMContentLoaded', () => {
   const thumbs = new Splide('#thumbSplide', {
     direction: 'ttb',
