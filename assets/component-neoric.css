@@ -55,6 +55,10 @@
 }
 .neoric-main .splide__pagination .splide__pagination__page {
   background: var(--color-scrollDark);
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+  border-radius: 50%;
 }
 .neoric-main .splide__pagination .is-active {
   background: var(--color-text-secondary);
@@ -65,22 +69,18 @@
   background: var(--color-fullWhite);
   border-radius: 0.75rem;
   box-shadow: 0 4px 12px var(--color-shadowLight);
-  padding: 2rem;
-  max-width: 360px;
+  box-sizing: border-box;
+  padding: 24px;
 }
-
-/* Title & vendor */
 .neoric-info-card .neoric-title {
   font-size: var(--font-size-xl);
-  line-height: var(--line-height-xl);
-  font-weight: var(--font-weight-semibold);
+  margin: 0 0 8px;
   color: var(--color-text-primary);
-  margin: 0 0 0.5rem;
 }
 .neoric-info-card .neoric-vendor {
   font-size: var(--font-size-medium);
+  margin: 0 0 16px;
   color: var(--color-text-muted);
-  margin: 0 0 1.5rem;
 }
 
 /* Prices */
@@ -99,39 +99,42 @@
   color: var(--color-text-muted);
   font-size: var(--font-size-small);
   margin-left: 0.5rem;
+  vertical-align: super;
 }
 
 /* Stock indicator */
 .neoric-stock {
   display: flex;
   align-items: center;
+  gap: 8px;
   font-size: var(--font-size-medium);
   color: var(--color-availableGreen);
-  margin: 1.5rem 0;
+  margin: 16px 0;
 }
 .neoric-stock .dot {
-  width: 0.75rem;
-  height: 0.75rem;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: var(--color-availableGreen);
-  margin-right: 0.5rem;
 }
 
 /* Add-to-cart button */
 .neoric-info-card .button--primary {
+  display: block;
   width: 100%;
-  font-family: var(--font-family);
+  max-width: 424px;
+  height: 52px;
+  margin: 0 auto;
   font-size: var(--font-size-medium);
   font-weight: var(--font-weight-semibold);
   background: var(--color-text-secondary);
   color: var(--color-text-light);
   border: none;
   border-radius: 0.5rem;
-  padding: 1rem;
   cursor: pointer;
   text-decoration: var(--text-decoration-none);
   text-align: center;
-  display: block;
+  line-height: 52px;
 }
 .neoric-info-card .button--primary:hover {
   opacity: 0.9;
@@ -170,17 +173,8 @@
   .neoric-main .splide__pagination {
     display: flex !important;
     justify-content: center;
+    margin-top: 1rem;
     z-index: 10;
-  }
-  .neoric-main .splide__pagination__page {
-    width: 8px;
-    height: 8px;
-    margin: 0 4px;
-    border-radius: 50%;
-    background: var(--color-scrollDark);
-  }
-  .neoric-main .splide__pagination__page.is-active {
-    background: var(--color-text-secondary);
   }
 
   /* Peek next/prev slide */
@@ -227,7 +221,7 @@
     height: 100%;
   }
 
-  /* Main image: exactly 480×480 px */
+  /* Main image & Info card fixed sizes */
   .neoric-main {
     width: 480px;
     height: 480px;
@@ -235,5 +229,10 @@
   .neoric-main .splide__slide img {
     width: 100%;
     height: 100%;
+  }
+
+  .neoric-info-card {
+    width: 475px;
+    height: 275px;
   }
 }
