@@ -3,38 +3,41 @@ document.addEventListener('DOMContentLoaded', () => {
   const thumbs = new Splide('#thumbSplide', {
     direction     : 'ttb',
     fixedWidth    : 100,
+    fixedHeight   : 100 * 4 + 10 * 3,  // 4 thumbs of 100px + 3 gaps of 10px
     gap           : 10,
+    perPage       : 4,                  // show exactly 4 slides
     isNavigation  : true,
     pagination    : false,
     arrows        : false,
-
-    // ← add this:
-    heightRatio   : 0.5,   // rail height = 50% of width (adjust as needed)
-
     breakpoints: {
       989: {
         direction   : 'ltr',
         fixedWidth  : 80,
-        heightRatio : 0.3  // you can change per breakpoint too
+        fixedHeight : 80,               // show as many as fit horizontally
+        perPage     : 3
       }
     },
   }).mount();
 
   /* Main slider */
   const main = new Splide('#mainSplide', {
-    type      : 'fade',
-    rewind    : true,
-    pagination: false,
-    arrows    : true,
-    heightRatio: 0.75,     // you already have this
+    type        : 'fade',
+    rewind      : true,
+    pagination  : false,
+    arrows      : true,
+    heightRatio : 0.75,
 
     breakpoints: {
-      989: {
-        type       : 'slide',
-        arrows     : true,
-        pagination : true,
-        autoHeight : true
+      768: {
+        type        : 'slide',
+        arrows      : false,    // hide arrows on phones
+        pagination  : true,     // show dots on phones
+        perPage     : 1,
+        autoHeight  : true,
+        drag        : 'free'
       }
     },
-  }).sync(thumbs).mount();
+  });
+
+  main.sync(thumbs).mount();
 });
