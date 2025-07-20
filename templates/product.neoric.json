@@ -1,9 +1,9 @@
 {
   "sections": {
-    "product": {
+    "main": {
       "type": "product-neoric",
       "settings": {}
     }
   },
-  "order": ["product"]
+  "order": ["main"]
 }
