@@ -261,6 +261,7 @@
     <!-- Splide carousel styles -->
     {{ 'splide-core.min.css'    | asset_url | stylesheet_tag }}
     {{ 'splide.min.css'         | asset_url | stylesheet_tag }}
+    {{ 'component-neoric.css'   | asset_url | stylesheet_tag }}
 
     {%- if settings.cart_type == 'drawer' -%}
       {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}

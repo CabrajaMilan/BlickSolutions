@@ -1,0 +1,151 @@
+/* component-neoric.css */
+
+/* Container */
+.neoric-product-gallery-section {
+  padding: 4rem 1rem;
+  background: var(--color-fullWhite);
+  font-family: var(--font-family);
+}
+
+/* Grid: thumbs • main • info */
+.neoric-product-grid {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  max-width: var(--page-width);
+  margin: 0 auto;
+}
+
+/* Thumbnails rail */
+.neoric-thumbs {
+  overflow: hidden;
+}
+.neoric-thumbs .splide__slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px var(--color-shadowLight);
+}
+
+/* Main slider */
+.neoric-main .splide__slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px var(--color-shadowLight);
+}
+
+/* Splide arrows */
+.neoric-main .splide__arrow {
+  background: transparent;
+  color: var(--color-text-gray);
+  font-size: 1.5rem;
+}
+.neoric-main .splide__arrow--prev {
+  left: 0.5rem;
+}
+.neoric-main .splide__arrow--next {
+  right: 0.5rem;
+}
+
+/* Splide pagination (dots) */
+.neoric-main .splide__pagination {
+  margin-top: 1rem;
+}
+.neoric-main .splide__pagination .splide__pagination__page {
+  background: var(--color-scrollDark);
+}
+.neoric-main .splide__pagination .is-active {
+  background: var(--color-text-secondary);
+}
+
+/* Info card */
+.neoric-info-card {
+  background: var(--color-fullWhite);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px var(--color-shadowLight);
+  padding: 2rem;
+  max-width: 360px;
+}
+
+/* Title & vendor */
+.neoric-info-card .neoric-title {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0 0 0.5rem;
+}
+.neoric-info-card .neoric-vendor {
+  font-size: var(--font-size-medium);
+  color: var(--color-text-muted);
+  margin: 0 0 1.5rem;
+}
+
+/* Prices */
+.price-compare {
+  text-decoration: var(--text-decoration-strikethrough);
+  color: var(--color-text-gray);
+  margin-right: 0.5rem;
+  font-size: var(--font-size-medium);
+}
+.price-current {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-large);
+}
+.price-tax {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+  margin-left: 0.5rem;
+}
+
+/* Stock indicator */
+.neoric-stock {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-medium);
+  color: var(--color-availableGreen);
+  margin: 1.5rem 0;
+}
+.neoric-stock .dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--color-availableGreen);
+  margin-right: 0.5rem;
+}
+
+/* Add-to-cart button */
+.neoric-info-card .button--primary {
+  width: 100%;
+  font-family: var(--font-family);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-semibold);
+  background: var(--color-text-secondary);
+  color: var(--color-text-light);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  cursor: pointer;
+  text-decoration: var(--text-decoration-none);
+  text-align: center;
+  display: block;
+}
+.neoric-info-card .button--primary:hover {
+  opacity: 0.9;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 768px) {
+  .neoric-product-grid {
+    grid-template-columns: 1fr;
+  }
+  .neoric-thumbs {
+    display: none;
+  }
+  .neoric-info-card {
+    margin-top: 2rem;
+  }
+}
