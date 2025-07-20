@@ -1,5 +1,7 @@
 /**
  *  Neoric Product Gallery – Splide initialisation
+ *  • #thumbSplide – vertical thumbnail rail
+ *  • #mainSplide  – main image slider (fade) synced with thumbs
  */
 document.addEventListener('DOMContentLoaded', () => {
   const thumbs = new Splide('#thumbSplide', {
@@ -9,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     isNavigation: true,
     pagination: false,
     arrows: false,
-    breakpoints: { 989: { direction: 'ltr', fixedWidth: 80 } }
+    breakpoints: { 989: { direction: 'ltr', fixedWidth: 80 } },
   }).mount();
 
   const main = new Splide('#mainSplide', {
@@ -19,8 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
     arrows: true,
     heightRatio: 0.75,
     breakpoints: {
-      989: { type: 'slide', arrows: true, pagination: true, autoHeight: true }
-    }
+      989: {
+        type: 'slide',
+        arrows: true,
+        pagination: true,
+        autoHeight: true
+      }
+    },
   });
 
   main.sync(thumbs).mount();
