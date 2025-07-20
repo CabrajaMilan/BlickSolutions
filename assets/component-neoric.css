@@ -1,207 +1,244 @@
-/* ───────────────────────── component‑neoric.css ─────────────────────────
-   Full file – tokens, gallery, and centred info‑card rules
-*/
+/* ================================================================
+   Global design tokens – kept here so this single file is self‑
+   contained.  If you later move them to base.css, simply delete
+   the :root{} block below and keep everything else.
+================================================================ */
+:root {
+  /* === PRODUCT PAGE COLORS === */
+  --color-fullWhite:   #ffffff;
+  --color-headerGrey:  #f2f2f2;
+  --color-shadowDark:  #00000029;
+  --color-shadowLight: #d5d5d5;
+  --color-availableGreen: #25a525;
+  --color-scrollLight: #f8f8f8;
+  --color-scrollDark:  #e5e5e5;
+  --color-announcementBar: #5f5f5f;
 
-/* === Neoric design tokens (colours, type, spacing) === */
-:root{
-  /* Colours */
-  --color-fullWhite:#ffffff;
-  --color-headerGrey:#f2f2f2;
-  --color-shadowDark:#00000029;      /* 25 % dark shadow */
-  --color-shadowLight:#d5d5d5;       /* subtle card shadow */
-  --color-availableGreen:#25a525;    /* stock indicator */
-  --color-scrollLight:#f8f8f8;       /* inactive dot  */
-  --color-scrollDark:#e5e5e5;        /* active dot    */
-  --color-announcementBar:#5f5f5f;
+  /* === TEXT COLORS === */
+  --color-text-primary:   #000000;
+  --color-text-secondary: #1f47ff;
+  --color-text-muted:     #254525;
+  --color-text-light:     #ffffff;
+  --color-text-gray:      #383838;
 
-  --color-text-primary:#000000;
-  --color-text-secondary:#1f47ff;
-  --color-text-muted:#254525;
-  --color-text-light:#ffffff;
-  --color-text-gray:#383838;
+  /* === TYPOGRAPHY === */
+  --font-family: 'Montserrat', sans-serif;
 
-  /* Typography (Montserrat) */
-  --font-family:'Montserrat',sans-serif;
-  --font-weight-regular:400;
-  --font-weight-medium:500;
-  --font-weight-semibold:600;
+  /* === FONT WEIGHTS === */
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
 
-  --font-size-xxl:25px;  /* h1 mobile / desktop */
-  --font-size-xl:22px;   /* not used in card  */
-  --font-size-large:18px;
-  --font-size-medium:16px;
-  --font-size-small:15px;
-  --font-size-xs:10px;
+  /* === FONT SIZES === */
+  --font-size-xxl:    25px; /* desktop H1 */
+  --font-size-xl:     22px;
+  --font-size-large:  18px;
+  --font-size-medium: 16px;
+  --font-size-small:  15px;
+  --font-size-xs:     10px;
 
-  --line-height-xxl:30px;
-  --line-height-xl:27px;
-  --line-height-large:22px;
-  --line-height-medium:19px;
-  --line-height-small:13px;
+  /* === LINE HEIGHTS === */
+  --line-height-xxl:    30px;
+  --line-height-xl:     27px;
+  --line-height-large:  22px;
+  --line-height-medium: 19px;
+  --line-height-small:  13px;
 
-  --text-decoration-strikethrough:line-through;
-  --text-decoration-none:none;
-
-  --page-width:1920px; /* canvas width */
+  /* === MISC === */
+  --text-decoration-strikethrough: line-through;
+  --text-decoration-none: none;
 }
 
-/* ─────────────────────── Section & centred grid ─────────────────────── */
-.neoric-product-gallery-section{
-  padding:4rem 1rem;
-  background:var(--color-fullWhite);
-  font-family:var(--font-family);
+/* ================================================================
+   NEORIC PRODUCT GALLERY
+================================================================ */
+
+/* ----- Section wrapper --------------------------------------- */
+.neoric-product-gallery-section {
+  padding: 4rem 1rem;
+  background: var(--color-fullWhite);
+  font-family: var(--font-family);
 }
 
-.neoric-product-grid{
-  display:grid;
-  grid-template-columns:auto 1fr auto; /* overridden on desktop */
-  gap:2rem;
-  align-items:start;
-  max-width:var(--page-width);
-  margin:0 auto;          /* centre whole block  */
+/* ----- Three‑column layout (thumbs • main • info) ------------- */
+.neoric-product-grid {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  justify-content: center;   /* horizontally centre whole block */
+  max-width: var(--page-width);
+  margin: 0 auto;
 }
 
-/* ─────────────────────── Thumbnails rail ─────────────────────── */
-.neoric-thumbs{ overflow:hidden; }
-.neoric-thumbs .splide__slide img{
-  width:100%; height:auto;
-  border-radius:.5rem;
-  box-shadow:0 2px 4px var(--color-shadowLight);
-  object-fit:cover;
+/* ----- Thumbnail rail ---------------------------------------- */
+.neoric-thumbs {
+  overflow: hidden;
+}
+.neoric-thumbs .splide__slide {
+  width: 100px !important;
+  height: 100px !important;
+}
+.neoric-thumbs .splide__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: .5rem;
+  box-shadow: 0 2px 4px var(--color-shadowLight);
 }
 
-/* ─────────────────────── Main slider ─────────────────────── */
-.neoric-main{ position:relative; }
-.neoric-main .splide__slide img{
-  width:100%; height:auto; object-fit:cover;
-  border-radius:.5rem;
-  box-shadow:0 4px 8px var(--color-shadowLight);
+/* ----- Main slider ------------------------------------------- */
+.neoric-main {
+  width: 480px;
+  height: 480px;
+}
+.neoric-main .splide__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: .5rem;
+  box-shadow: 0 4px 8px var(--color-shadowLight);
 }
 
-/* Arrows */
-.neoric-main .splide__arrow{
-  background:transparent; color:var(--color-text-gray);
-  font-size:1.5rem;
+/* slider arrows */
+.neoric-main .splide__arrow {
+  background: transparent;
+  color: var(--color-text-gray);
+  font-size: 1.5rem;
 }
-.neoric-main .splide__arrow--prev{ left:.5rem; }
-.neoric-main .splide__arrow--next{ right:.5rem; }
+.neoric-main .splide__arrow--prev { left: .5rem; }
+.neoric-main .splide__arrow--next { right: .5rem; }
 
-/* Pagination dots */
-.neoric-main .splide__pagination{
-  position:static !important;
-  display:flex !important;
-  justify-content:center;
-  gap:8px;
-  margin-top:1rem;
+/* pagination dots (one dot per TWO slides → half the default) */
+.neoric-main .splide__pagination {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
 }
-.neoric-main .splide__pagination__page{
-  width:8px; height:8px; border-radius:50%; opacity:1;
-  background:var(--color-scrollLight);
+.neoric-main .splide__pagination__page {
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+  border-radius: 50%;
+  background: var(--color-scrollLight);
 }
-.neoric-main .splide__pagination__page.is-active{
-  background:var(--color-scrollDark);
+.neoric-main .splide__pagination__page.is-active {
+  background: var(--color-scrollDark);
 }
-
-/* ─────────────────────── Info card ─────────────────────── */
-.neoric-info-card{
-  width:100%; max-width:475px; height:275px;           /* fixed desktop */
-  background:var(--color-fullWhite);
-  border-radius:.75rem;
-  box-shadow:0 4px 12px var(--color-shadowLight);
-  padding:32px; box-sizing:border-box;
-  display:flex; flex-direction:column;
-  justify-content:center; align-items:center; gap:16px;
-  text-align:center;
+/* keep only odd dots to “halve” the count */
+.neoric-main .splide__pagination__page:nth-child(even) {
+  display: none;
 }
 
-/* Title & subtitle */
-.neoric-title{
-  font-size:var(--font-size-xxl);
-  line-height:var(--line-height-xxl);
-  font-weight:var(--font-weight-semibold);
-  color:var(--color-text-primary);
-  margin:0;
-}
-.neoric-vendor{
-  font-size:18px;
-  font-weight:var(--font-weight-medium);
-  color:var(--color-text-muted);
-  margin:0;
+/* ----- Info card --------------------------------------------- */
+.neoric-info-card {
+  width: 475px;
+  min-height: 275px;
+  padding: 32px 40px;
+  background: var(--color-fullWhite);
+  border-radius: .75rem;
+  box-shadow: 0 4px 12px var(--color-shadowLight);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;   /* LEFT aligned text */
+  justify-content: center;   /* even top/bottom breathing room */
+  gap: 18px;
+  box-sizing: border-box;
 }
 
-/* Prices row */
-.neoric-price{
-  display:flex; gap:8px; align-items:baseline;
-  margin:0;
-}
-.price-compare{
-  font-size:18px; font-weight:var(--font-weight-semibold);
-  color:var(--color-text-gray);
-  text-decoration:var(--text-decoration-strikethrough);
-}
-.price-current{
-  font-size:18px; font-weight:var(--font-weight-semibold);
-  color:var(--color-text-secondary);
-}
-.price-tax{
-  font-size:10px; color:var(--color-text-muted);
+/* Typography inside the card */
+.neoric-title {
+  font: var(--font-weight-semibold) var(--font-size-xxl)/var(--line-height-xxl) var(--font-family);
+  color: var(--color-text-primary);
+  margin: 0;
 }
 
-/* Stock line */
-.neoric-stock{
-  display:flex; align-items:center; gap:8px;
-  font-size:15px; color:var(--color-availableGreen);
-  margin:0;
-}
-.neoric-stock .dot{
-  width:10px; height:10px; border-radius:50%;
-  background:var(--color-availableGreen);
+.neoric-vendor {
+  font: var(--font-weight-medium) var(--font-size-large)/var(--line-height-large) var(--font-family);
+  color: var(--color-text-muted);
+  margin: 0;
 }
 
-/* Button */
-.button--primary{
-  width:100%; max-width:424px; height:52px;
-  line-height:52px; text-align:center;
-  background:var(--color-text-secondary);
-  color:var(--color-text-light);
-  border:none; border-radius:.25rem;
-  font-size:18px; font-weight:var(--font-weight-semibold);
-  cursor:pointer; text-decoration:var(--text-decoration-none);
+/* price row */
+.neoric-price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
 }
-.button--primary:hover{ opacity:.9; }
+.price-compare {
+  text-decoration: var(--text-decoration-strikethrough);
+  font: var(--font-weight-semibold) var(--font-size-large)/var(--line-height-large) var(--font-family);
+  color: var(--color-text-primary);
+}
+.price-current {
+  font: var(--font-weight-semibold) var(--font-size-large)/var(--line-height-large) var(--font-family);
+  color: var(--color-text-secondary);
+}
+.price-tax {
+  font: var(--font-weight-medium) var(--font-size-xs)/var(--line-height-small) var(--font-family);
+  color: var(--color-text-muted);
+}
 
-/* ─────────────────────── Responsive rules ─────────────────────── */
+/* stock */
+.neoric-stock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: var(--font-weight-medium) 15px/19px var(--font-family);
+  color: var(--color-availableGreen);
+  margin: 0;
+}
+.neoric-stock .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-availableGreen);
+}
 
-/* ≤1024 px */
-@media(max-width:1024px){
-  .neoric-product-gallery-section{ padding:2rem 1rem; }
-  .neoric-product-grid{ grid-template-columns:1fr; gap:1.5rem; }
+/* button */
+.button--primary {
+  width: 424px;
+  height: 52px;
+  background: var(--color-text-secondary);
+  color: var(--color-text-light);
+  border: none;
+  border-radius: .25rem;
+  font: var(--font-weight-semibold) 18px/52px var(--font-family);
+  text-align: center;
+  cursor: pointer;
+}
+.button--primary:hover { opacity: .9; }
 
-  .neoric-thumbs{ display:none; }
-  .neoric-main .splide__arrow{ display:none !important; }
-  #mainSplide .splide__list{ overflow:visible !important; }
+/* =============================================================
+   Responsive tweaks
+================================================================ */
 
-  .neoric-info-card{
-    width:100%; height:auto; padding:24px;
+/* ≤1024 px  – stack layout, hide thumbs, arrows → dots */
+@media (max-width:1024px) {
+  .neoric-product-gallery-section { padding: 2rem 1rem; }
+
+  .neoric-product-grid   { grid-template-columns: 1fr; }
+  .neoric-thumbs         { display: none; }
+  .neoric-main           { width: 100%; height: auto; }
+  .neoric-main .splide__arrow { display:none !important; }
+
+  .neoric-info-card      { width: 100%; margin-top: 2rem; }
+}
+
+/* ≤768 px  – icons column, maintain button full‑width */
+@media (max-width:768px){
+  .neoric-icons{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1.5rem;
+    margin-top:2rem;
   }
 }
 
-/* ≥1025 px  */
-@media(min-width:1025px){
-  .neoric-product-grid{
-    /* 100 + 480 + 475 keeps entire gallery centred */
-    grid-template-columns:100px 480px 475px;
-  }
-
-  .neoric-main{ width:480px; height:480px; }
-  .neoric-main .splide__slide img{ width:100%; height:100%; }
-
-  .neoric-thumbs{ width:100px; }
-  .neoric-thumbs .splide__slide{
-    width:100px !important; height:100px !important;
-  }
-  .neoric-thumbs .splide__slide img{ width:100%; height:100%; }
-
-  /* Hide dots on desktop */
-  .neoric-main .splide__pagination{ display:none !important; }
+/*  ≥1360 px – give carousel a bit more breathing room */
+@media (min-width:1360px){
+  .neoric-product-gallery-section{ padding:4rem 0; }
 }
