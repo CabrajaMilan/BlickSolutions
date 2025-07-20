@@ -379,8 +379,8 @@
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    <!-- Splide carousel script + init -->
-    {{ 'splide.min.js'          | asset_url | script_tag }}
-    {{ 'neoric-gallery.js'      | asset_url | script_tag }}
+      <!-- Splide carousel script + init (deferred) -->
+  <script defer src="{{ 'splide.min.js'     | asset_url }}"></script>
+  <script defer src="{{ 'neoric-gallery.js' | asset_url }}"></script>
   </body>
 </html>
