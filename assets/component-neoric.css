@@ -141,16 +141,6 @@
 
 /* Tablet & Mobile (≤1024px) */
 @media (max-width: 1024px) {
-  /* make sure we can see the dots */
-  .neoric-main .splide__pagination {
-    display: flex !important;
-    justify-content: center;
-    margin-top: 1rem;
-  }
-  .neoric-main .splide__arrow {
-    display: none;
-  }
-
   .neoric-product-gallery-section {
     padding: 2rem 1rem;
   }
@@ -175,10 +165,27 @@
 
   /* Hide arrows, show dots on phones */
   .neoric-main .splide__arrow {
-    display: none;
+    display: none !important;
   }
   .neoric-main .splide__pagination {
-    display: flex;
+    display: flex !important;
+    justify-content: center;
+    z-index: 10;
+  }
+  .neoric-main .splide__pagination__page {
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+    border-radius: 50%;
+    background: var(--color-scrollDark);
+  }
+  .neoric-main .splide__pagination__page.is-active {
+    background: var(--color-text-secondary);
+  }
+
+  /* Peek next/prev slide */
+  #mainSplide .splide__list {
+    overflow: visible !important;
   }
 
   /* Icons switch to column */
