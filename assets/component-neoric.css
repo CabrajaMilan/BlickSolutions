@@ -182,6 +182,7 @@
   /* Main image: fixed 480px container */
   .neoric-main {
     width: 480px;
+    height: 480px;
   }
   .neoric-main .splide__slide img {
     width: 100%;
