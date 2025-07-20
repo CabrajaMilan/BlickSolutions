@@ -1,4 +1,48 @@
 :root {
+ /* === PRODUCT PAGE COLORS === */
+  --color-fullWhite:   #ffffff;
+  --color-headerGrey:  #f2f2f2;
+  --color-shadowDark:  #00000029;
+  --color-shadowLight: #d5d5d5;
+  --color-availableGreen: #25a525;
+  --color-scrollLight: #f8f8f8;
+  --color-scrollDark:  #e5e5e5;
+  --color-announcementBar: #5f5f5f;
+
+  /* === TEXT COLORS === */
+  --color-text-primary:   #000000;
+  --color-text-secondary: #1f47ff;
+  --color-text-muted:     #254525;
+  --color-text-light:     #ffffff;
+  --color-text-gray:      #383838;
+
+  /* === TYPOGRAPHY === */
+  --font-family: 'Montserrat', sans-serif;
+
+  /* === FONT WEIGHTS === */
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+
+  /* === FONT SIZES === */
+  --font-size-xxl:   25px;
+  --font-size-xl:    22px;
+  --font-size-large: 18px;
+  --font-size-medium:16px;
+  --font-size-small: 15px;
+  --font-size-xs:    10px;
+
+  /* === LINE HEIGHTS === */
+  --line-height-xxl:    30px;
+  --line-height-xl:     27px;
+  --line-height-large:  22px;
+  --line-height-medium: 19px;
+  --line-height-small:  13px;
+
+  /* === TEXT DECORATIONS === */
+  --text-decoration-strikethrough: line-through;
+  --text-decoration-none:         none;
+
   --alpha-button-background: 1;
   --alpha-button-border: 1;
   --alpha-link: 0.85;
