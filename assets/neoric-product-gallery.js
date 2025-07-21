@@ -1,39 +1,79 @@
+/* ===========================================================
+   neoric-product-gallery.js   |   v1.3  (2025‑07‑21)
+   -----------------------------------------------------------
+   - Haupt‑Slider  (#mainSplide)
+   - Thumbnail‑Slider (#thumbSplide)  nur ≥ 1024 px
+   - sauberes Re‑Init bei Resize
+   - keine doppelten Pagination‑Dots
+   =========================================================== */
 document.addEventListener('DOMContentLoaded', () => {
-  /* Thumbnail slider – no changes here if it’s working */
-  const thumbs = new Splide('#thumbSplide', {
-    direction    : 'ttb',
-    perPage      : 4,
-    fixedWidth   : 100,
-    fixedHeight  : 100,
-    gap          : 10,
-    isNavigation : true,
-    pagination   : false,
-    arrows       : false,
-    breakpoints  : {
-      989: { direction: 'ltr', perPage: 3, fixedWidth: 80, fixedHeight: 80 }
+
+  /* ---------- Helpers ------------------------------------ */
+  const $   = sel => document.querySelector(sel);
+
+  /* ---------- DOM‑Elemente ------------------------------- */
+  const mainEl  = $('#mainSplide');
+  const thumbEl = $('#thumbSplide');
+  if (!mainEl) return;                               // Safety‑Net
+
+  /* ---------- Haupt‑Slider (immer) ----------------------- */
+  const main = new Splide(mainEl, {
+    type       : 'slide',
+    perPage    : 1,
+    rewind     : true,
+    arrows     : true,
+    pagination : true,
+    classes    : { pagination: 'splide__pagination neoric-pagination' },
+    breakpoints: {
+      1023: { height: 350, arrows: false },          // Mobile
     },
   }).mount();
 
-  /* Main slider */
-  const main = new Splide('#mainSplide', {
-    type        : 'slide',
-    perPage     : 1,
-    rewind      : true,
-    pagination  : false,    // desktop – no dots
-    arrows      : true,
-    heightRatio : 1,        // for 480×480
+  /* ---------- Thumbnails (nur Desktop) ------------------- */
+  let thumb = null;                                  // Instanz‑Platzhalter
 
-    breakpoints: {
-      // ≤768px: show dots + peek + swipe
-      768: {
-        pagination  : true,
-        arrows      : false,
-        drag        : true,
-        peek        : { before: 20, after: 20 },
-        gap         : 10
-      }
-    },
+  function mountThumbs () {
+    if (window.innerWidth < 1024 || thumb) return;
+
+    /* 1. Instanz **erstellen** … */
+    thumb = new Splide(thumbEl, {
+      direction     : 'ttb',
+      height        : 480,
+      gap           : '8px',
+      perPage       : 5,
+      arrows        : false,
+      pagination    : false,
+      isNavigation  : true,
+    });
+
+    /* ⚑ … 2. erst **mounten** … */
+    thumb.mount();
+
+    /* ⚑ … 3. dann mit dem Haupt‑Slider verknüpfen */
+    main.sync( thumb );
+  }
+
+  function destroyThumbs () {
+    if (thumb && window.innerWidth < 1024) {
+      thumb.destroy();
+      thumb = null;
+    }
+  }
+
+  /* ---------- Resize‑Handling ---------------------------- */
+  window.addEventListener('resize', () => {
+    mountThumbs();
+    destroyThumbs();
+    cleanExtraPaginations();
   });
 
-  main.sync(thumbs).mount();
+  /* ---------- doppelte Dots verhindern ------------------- */
+  function cleanExtraPaginations () {
+    const paginations = mainEl.querySelectorAll('.neoric-pagination');
+    paginations.forEach((p, i) => { if (i) p.remove(); });
+  }
+  main.on('mounted resize', cleanExtraPaginations);
+
+  /* ---------- initial Desktop‑Mount ---------------------- */
+  mountThumbs();          // falls direkt im Desktop‑Viewport gestartet
 });
