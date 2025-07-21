@@ -1,12 +1,5 @@
 /* ===========================================================
-   neoric-product-gallery.js   |   v1.5  (2025‑07‑21)
-   -----------------------------------------------------------
-   • Haupt‑Slider  (#mainSplide)
-   • Thumbnail‑Slider (#thumbSplide)  nur ≥ 1024 px
-   • sauberes Re‑Init bei Resize
-   • keine doppelten Pagination‑Dots
-   • AJAX Add‑to‑Cart für “In den Einkaufswagen”
-   • Mobile peek: 4% padding left/right
+   neoric-product-gallery.js  
    =========================================================== */
 document.addEventListener('DOMContentLoaded', () => {
   const $       = sel => document.querySelector(sel);
