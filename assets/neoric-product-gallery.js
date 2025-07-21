@@ -1,6 +1,6 @@
 /* ===========================================================
    neoric-product-gallery.js  
-   =========================================================== */
+   ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   const $       = sel => document.querySelector(sel);
   const mainEl  = $('#mainSplide');
