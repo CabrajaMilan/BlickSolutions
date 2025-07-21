@@ -1,0 +1,109 @@
+{% comment %}
+  Neoric Product Gallery – Splide initialisation
+{% endcomment %}
+
+<section class="page-width neoric-product-gallery-section">
+  <div class="neoric-product-grid">
+    <!-- Thumbnails (desktop only) -->
+    {% if section.settings.show_thumbs %}
+      <div class="neoric-thumbs desktop-only">
+        <div id="thumbSplide" class="splide" aria-label="Product thumbnails">
+          <div class="splide__track">
+            <ul class="splide__list">
+              {% for media in product.media %}
+                <li class="splide__slide">
+                  {{ media | image_url: width: 100 | image_tag: loading: "lazy", alt: media.alt }}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- Main image slider -->
+    <div class="neoric-main">
+      <div id="mainSplide" class="splide" aria-label="Main product images">
+        <div class="splide__track">
+          <ul class="splide__list">
+            {% for media in product.media %}
+              <li class="splide__slide">
+                {{ media | image_url: width: 1200 | image_tag: alt: media.alt }}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info card -->
+    <div class="neoric-info-card">
+      <h1 class="neoric-title">{{ product.title }}</h1>
+      <p class="neoric-vendor">{{ product.vendor }}</p>
+
+      <p class="neoric-price">
+        {% if product.compare_at_price > product.price %}
+          <del class="price-compare">{{ product.compare_at_price | money }}</del>
+        {% endif %}
+        <strong class="price-current">{{ product.price | money }}</strong>
+        <small class="price-tax">inkl. MwSt.</small>
+      </p>
+
+      {% if product.available %}
+        <p class="neoric-stock">
+          <span class="dot"></span>
+          Auf Lager, in 2–3 Tagen bei dir
+        </p>
+      {% endif %}
+
+{%- form 'product', product, id: 'neoric-product-form' -%}
+
+  <input type="hidden" name="quantity" value="1" />
+
+
+  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
+
+  <button
+    type="submit"
+    class="button button--primary"
+    data-label="{{ section.settings.button_label }}"
+  >
+    {{ section.settings.button_label }}
+  </button>
+{%- endform -%}
+
+
+    </div>
+  </div>
+
+  {% render 'neoric-icons' %}
+
+  <!-- Splide init script -->
+  <script defer src="{{ 'neoric-product-gallery.js' | asset_url }}"></script>
+</section>
+
+{% schema %}
+{
+  "name": "Neoric Product Gallery",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_thumbs",
+      "label": "Show thumbnails",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Add to cart button label",
+      "default": "In den Einkaufswagen"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Neoric Gallery",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}
