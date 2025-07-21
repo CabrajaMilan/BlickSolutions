@@ -1,15 +1,16 @@
 /* ===========================================================
-   neoric-product-gallery.js   |   v1.3  (2025‑07‑21)
+   neoric-product-gallery.js   |   v1.4  (2025‑07‑21)
    -----------------------------------------------------------
    - Haupt‑Slider  (#mainSplide)
    - Thumbnail‑Slider (#thumbSplide)  nur ≥ 1024 px
    - sauberes Re‑Init bei Resize
    - keine doppelten Pagination‑Dots
+   - mobile padding 4% left/right, focus center
    =========================================================== */
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------- Helpers ------------------------------------ */
-  const $   = sel => document.querySelector(sel);
+  const $ = sel => document.querySelector(sel);
 
   /* ---------- DOM‑Elemente ------------------------------- */
   const mainEl  = $('#mainSplide');
@@ -18,42 +19,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------- Haupt‑Slider (immer) ----------------------- */
   const main = new Splide(mainEl, {
-    type       : 'slide',
-    perPage    : 1,
-    rewind     : true,
-    arrows     : true,
-    pagination : true,
-    classes    : { pagination: 'splide__pagination neoric-pagination' },
-    breakpoints: {
-      1023: { height: 350, arrows: false },          // Mobile
+    type        : 'slide',
+    perPage     : 1,
+    rewind      : true,
+    arrows      : true,
+    pagination  : true,
+    trimSpace   : false,            // allow partial slides
+    classes     : { pagination: 'splide__pagination neoric-pagination' },
+    breakpoints : {
+      1023: {                      // ≤768‑1023px range
+        height   : 350,
+        arrows   : false,
+        padding  : { left: '4%', right: '4%' },
+        focus    : 'center',
+      },
+      // desktop inherits CSS width/height and no padding by default
     },
   }).mount();
 
   /* ---------- Thumbnails (nur Desktop) ------------------- */
-  let thumb = null;                                  // Instanz‑Platzhalter
+  let thumb = null;                                   // Instanz‑Platzhalter
 
-  function mountThumbs () {
+  function mountThumbs() {
     if (window.innerWidth < 1024 || thumb) return;
 
-    /* 1. Instanz **erstellen** … */
     thumb = new Splide(thumbEl, {
       direction     : 'ttb',
       height        : 480,
-      gap           : '8px',
       perPage       : 5,
+      gap           : '8px',
       arrows        : false,
       pagination    : false,
       isNavigation  : true,
-    });
+    }).mount();
 
-    /* ⚑ … 2. erst **mounten** … */
-    thumb.mount();
-
-    /* ⚑ … 3. dann mit dem Haupt‑Slider verknüpfen */
-    main.sync( thumb );
+    main.sync(thumb);
   }
 
-  function destroyThumbs () {
+  function destroyThumbs() {
     if (thumb && window.innerWidth < 1024) {
       thumb.destroy();
       thumb = null;
@@ -68,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ---------- doppelte Dots verhindern ------------------- */
-  function cleanExtraPaginations () {
+  function cleanExtraPaginations() {
     const paginations = mainEl.querySelectorAll('.neoric-pagination');
     paginations.forEach((p, i) => { if (i) p.remove(); });
   }
