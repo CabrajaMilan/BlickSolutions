@@ -56,11 +56,23 @@
         </p>
       {% endif %}
 
-      {%- form 'product', product, id: 'neoric-product-form' -%}
-        <button type="submit" class="button button--primary">
-          {{ section.settings.button_label }}
-        </button>
-      {%- endform -%}
+{%- form 'product', product, id: 'neoric-product-form' -%}
+
+  <input type="hidden" name="quantity" value="1" />
+
+
+  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
+
+  <button
+    type="submit"
+    class="button button--primary"
+    data-label="{{ section.settings.button_label }}"
+  >
+    {{ section.settings.button_label }}
+  </button>
+{%- endform -%}
+
+
     </div>
   </div>
 
