@@ -1,6 +1,5 @@
 /* ================================================================
-   Global design tokens – if you later move them to base.css,
-   simply delete the :root{…} block below.
+   Product Page variables
 ================================================================ */
 :root {
   /* === PRODUCT PAGE COLORS === */
